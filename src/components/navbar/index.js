@@ -1,5 +1,6 @@
+import './styles/navbar.css';
 import { Outlet, Link } from 'react-router-dom';
-// import navLinks from '../../fixtures/navLinks';
+import navLinks from '../../fixtures/navLinks';
 
 const Navbar = () => (
   <>
@@ -7,12 +8,11 @@ const Navbar = () => (
       <nav>
         <h1>Bookstore CMS</h1>
         <ul>
-          <li>
-            <Link to="/">Books</Link>
-          </li>
-          <li>
-            <Link to="/categories">Categories</Link>
-          </li>
+          {navLinks.map(({ text, url }) => (
+            <li key={url}>
+              <Link to={url}>{text}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

@@ -1,3 +1,5 @@
+import './styles/form.css';
+
 const Form = () => (
   <div>
     <h4>ADD NEW BOOK</h4>
