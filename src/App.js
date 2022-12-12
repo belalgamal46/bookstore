@@ -1,5 +1,12 @@
+import PageRoutes from './routers/PageRoutes';
+import './app.css';
+
 function App() {
-  return <div className="App">App</div>;
+  return (
+    <>
+      <PageRoutes />
+    </>
+  );
 }
 
 export default App;
