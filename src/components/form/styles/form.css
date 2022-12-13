@@ -1,3 +1,20 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  row-gap: 10px;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
 input {
-  padding: 2px;
+  padding: 10px;
+}
+
+button[type='submit'] {
+  padding: 10px;
 }
