@@ -1,5 +1,12 @@
-form {
+.hero-section {
   display: flex;
   flex-direction: column;
-  width: 15%;
+  row-gap: 50px;
+  padding: 20px;
+}
+
+.books-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
