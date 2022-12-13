@@ -36,6 +36,7 @@ const Form = () => {
           name="book-title"
           onChange={handleChange}
           value={bookTitle}
+          required
         />
         <input
           type="text"
@@ -43,6 +44,7 @@ const Form = () => {
           name="book-author"
           onChange={handleChange}
           value={bookAuthor}
+          required
         />
         <button type="submit">ADD BOOK</button>
       </div>
