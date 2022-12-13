@@ -1,16 +1,11 @@
 import './styles/navbar.css';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { checkStatus } from '../../redux/categories';
 import navLinks from '../../fixtures/navLinks';
 
 const Navbar = () => {
   const { pathname } = useLocation();
-  const dispatch = useDispatch();
+  const activeLink = (url = '') => (pathname === url ? 'active' : '');
 
-  const handleClick = () => {
-    dispatch(checkStatus());
-  };
   return (
     <>
       <header>
@@ -19,11 +14,7 @@ const Navbar = () => {
           <ul className="nav-links">
             {navLinks.map(({ text, url }) => (
               <li key={url}>
-                <Link
-                  to={url}
-                  onClick={text === 'CATEGORIES' ? handleClick : ''}
-                  className={`${pathname === url ? 'active' : ''} nav-link`}
-                >
+                <Link to={url} className={`${activeLink(url)} nav-link`}>
                   {text}
                 </Link>
               </li>
