@@ -1,9 +1,14 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import './styles/categoriesPage.css';
 
-const Categories = () => (
-  <div>
-    <h1>Categories</h1>
-  </div>
-);
+const Categories = () => {
+  const title = useSelector((state) => state.categoriesReducer.status);
+
+  return (
+    <section className="categories-section">
+      <h1>{title}</h1>
+    </section>
+  );
+};
 
 export default Categories;
