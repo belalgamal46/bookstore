@@ -1,10 +1,28 @@
 nav {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   padding: 20px;
+  column-gap: 40px;
 }
 
-ul {
+nav h1 {
+  color: #0290ff;
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.nav-links {
   display: flex;
   list-style-type: none;
+  column-gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  opacity: 0.5;
+}
+
+.active {
+  opacity: 1;
 }
