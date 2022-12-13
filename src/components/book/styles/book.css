@@ -1,3 +1,44 @@
-.book {
-  font-size: 2rem;
+.book-info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.book-details h1 {
+  font-size: 1.375rem;
+}
+
+.book-details h2 {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1.7rem;
+}
+
+.divider {
+  width: 1.8px;
+  height: 25px;
+  background-color: lightgray;
+  border: none;
+}
+
+.button-outline {
+  background-color: transparent;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 300;
+  cursor: pointer;
+  color: gray;
+  padding: 6px 6px;
+  color: #4386bf;
+}
+
+.button-outline:hover {
+  color: black;
 }
