@@ -1,45 +1,37 @@
-import { v4 as uuidv4 } from 'uuid';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchBooks, createBook, deleteBook } from '../../apis/books';
 
+const FETCH_BOOKS = 'bookstore/books/fetchBooks';
 const ADD_BOOK = 'bookstore/books/addBook';
-const REMOVE_BOOK = 'bookstore/books/removeBook';
+const DELETE_BOOK = 'bookstore/books/deleteBook';
 
 const initialState = {
-  books: [
-    { bookTitle: 'The Hunger Games', bookAuthor: 'Suzanne Collins', id: uuidv4() },
-    { bookTitle: 'Dune', bookAuthor: 'Frank Herbert', id: uuidv4() },
-    {
-      bookTitle: 'Capital in the Twenty-First Century',
-      bookAuthor: 'Suzanne Collins',
-      id: uuidv4(),
-    },
-  ],
+  books: {},
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ADD_BOOK:
+    case `${FETCH_BOOKS}/fulfilled`:
       return {
         ...state,
-        books: [...state.books, payload],
+        books: payload,
       };
-    case REMOVE_BOOK:
+    case `${ADD_BOOK}/fulfilled`:
       return {
         ...state,
-        books: state.books.filter((book) => book.id !== payload.id),
+        books: { ...state.books, ...payload },
       };
+    case `${DELETE_BOOK}/fulfilled`:
+      return state;
     default:
       return state;
   }
 };
 
-export const addBook = (book = {}) => ({
-  type: ADD_BOOK,
-  payload: book,
-});
+export const addBook = createAsyncThunk(ADD_BOOK, createBook);
 
-export const removeBook = (book = {}) => ({
-  type: REMOVE_BOOK,
-  payload: book,
-});
+export const removeBook = createAsyncThunk(DELETE_BOOK, deleteBook);
+
+export const getBooks = createAsyncThunk(FETCH_BOOKS, fetchBooks);
 
 export default reducer;
