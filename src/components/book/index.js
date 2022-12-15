@@ -1,14 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { removeBook } from '../../redux/books';
+import { removeBook, getBooks } from '../../redux/books';
 import './styles/book.css';
 
 const Book = ({ bookTitle, bookAuthor, id }) => {
   const dispatch = useDispatch();
-
-  const handleClick = () => {
+  const handleClick = async () => {
     const book = { bookTitle, bookAuthor, id };
-    dispatch(removeBook(book));
+    await dispatch(removeBook(book));
+    dispatch(getBooks());
   };
 
   return (
@@ -36,10 +36,16 @@ const Book = ({ bookTitle, bookAuthor, id }) => {
   );
 };
 
+Book.defaultProps = {
+  bookTitle: '',
+  bookAuthor: '',
+  id: '',
+};
+
 Book.propTypes = {
-  bookTitle: PropTypes.string.isRequired,
-  bookAuthor: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  bookTitle: PropTypes.string,
+  bookAuthor: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default Book;
