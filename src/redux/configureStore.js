@@ -7,6 +7,12 @@ const store = configureStore({
     booksReducer,
     categoriesReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      // Ignore these field paths in all actions
+      ignoredActionPaths: ['bookstore/books'],
+    },
+  }),
 });
 
 export default store;
