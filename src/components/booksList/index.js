@@ -1,17 +1,36 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getBooks } from '../../redux/books';
 import Book from '../book';
 import './styles/bookList.css';
 
 const BooksList = ({ children }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
   const books = useSelector((state) => state.booksReducer.books);
+  const booksKeys = Object.keys(books);
 
   return (
     <section className="hero-section">
       <ul className="books-list">
-        {books.map(({ id, bookTitle, bookAuthor }) => (
-          <Book key={id} id={id} bookTitle={bookTitle} bookAuthor={bookAuthor} />
-        ))}
+        {booksKeys.map((key) => {
+          const book = books[key];
+          const { title, author, category } = book[0];
+          return (
+            <Book
+              key={key}
+              id={key}
+              bookTitle={title}
+              bookAuthor={author}
+              bookCategory={category}
+            />
+          );
+        })}
       </ul>
       {children}
     </section>
