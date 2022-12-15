@@ -1,4 +1,5 @@
 import './styles/navbar.css';
+import { FaUserAlt } from 'react-icons/fa';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import navLinks from '../../fixtures/navLinks';
 
@@ -10,7 +11,9 @@ const Navbar = () => {
     <>
       <header>
         <nav>
-          <h1>Bookstore CMS</h1>
+          <h1>
+            <Link to="/">Bookstore CMS</Link>
+          </h1>
           <ul className="nav-links">
             {navLinks.map(({ text, url }) => (
               <li key={url}>
@@ -20,6 +23,13 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          <button type="button" className="icon-button">
+            <span>
+              {' '}
+              <FaUserAlt />
+              {' '}
+            </span>
+          </button>
         </nav>
       </header>
       <main>

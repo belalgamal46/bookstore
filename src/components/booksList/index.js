@@ -32,6 +32,7 @@ const BooksList = ({ children }) => {
           );
         })}
       </ul>
+      <span className="horizontal-divider" />
       {children}
     </section>
   );

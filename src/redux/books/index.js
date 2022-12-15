@@ -14,7 +14,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case `${FETCH_BOOKS}/fulfilled`:
       return {
         ...state,
-        books: payload,
+        books: { ...payload },
       };
     case `${ADD_BOOK}/fulfilled`:
       return {
